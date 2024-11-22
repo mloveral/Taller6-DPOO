@@ -1,12 +1,14 @@
 package uniandes.dpoo.swing.interfaz.principal;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import uniandes.dpoo.swing.mundo.Restaurante;
 
@@ -32,22 +34,32 @@ public class PanelDetallesRestaurante extends JPanel
     {
         // Configura la etiqueta para el nombre
         // TODO completar el constructor
-    	labNombre = new JLabel();
+    	labNombre = new JLabel("Nombre:");
+    	labNombre.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
 
         // Configura la etiqueta para la calificación
         // TODO completar el constructor
-    	labCalificacion = new JLabel();
+    	labCalificacion = new JLabel("Calificación: ");
+    	labCalificacion.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
 
-        // Configura el checkbox para indicar si ya se visitaó o no el restaurante
+        // Configura el checkbox para indicar si ya se visitó o no el restaurante
         // TODO completar el constructor
     	chkVisitado = new JCheckBox();
+    	JLabel labelVer = new JLabel("Visitado");
+    	labelVer.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
+    	JPanel check = new JPanel();
+    	check.setLayout(new GridLayout(1,2));
+    	check.add(labelVer);
+    	check.add(chkVisitado);
 
         // Organiza los elementos en la venta
         // TODO completar el constructor
     	this.setLayout(new GridLayout(3, 1));
     	this.add(labNombre);
     	this.add(labCalificacion);
-    	this.add(chkVisitado);
+    	this.add(check);
+    	
+    	this.setBorder(new EmptyBorder(20, 20, 20, 20));
     }
 
     /**
@@ -59,7 +71,7 @@ public class PanelDetallesRestaurante extends JPanel
     private void actualizarRestaurante( String nombre, int calificacion, boolean visitado )
     {
      // TODO completar actualizarRestaurante
-    	labNombre.setText(nombre);
+    	labNombre.setText("Nombre: "+ nombre);
     	labCalificacion.setText(Integer.toString(calificacion));
     	chkVisitado.setSelected(visitado);
     	this.repaint();
