@@ -34,18 +34,30 @@ public class PanelDetallesRestaurante extends JPanel
     {
         // Configura la etiqueta para el nombre
         // TODO completar el constructor
-    	labNombre = new JLabel("Nombre:");
+    	labNombre = new JLabel();
     	labNombre.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
+    	JLabel nom = new JLabel("Nombre:");
+    	nom.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
+    	JPanel nomPanel = new JPanel();
+    	nomPanel.setLayout(new GridLayout(1,2));
+    	nomPanel.add(nom);
+    	nomPanel.add(labNombre);
 
         // Configura la etiqueta para la calificación
         // TODO completar el constructor
-    	labCalificacion = new JLabel("Calificación: ");
-    	labCalificacion.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
+    	labCalificacion = new JLabel();
+    	JLabel cal = new JLabel("Calificación: ");
+    	cal.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
+    	JPanel calificacion = new JPanel();
+    	calificacion.setLayout(new GridLayout(1,2));
+    	calificacion.add(cal);
+    	calificacion.add(labCalificacion);
 
         // Configura el checkbox para indicar si ya se visitó o no el restaurante
         // TODO completar el constructor
     	chkVisitado = new JCheckBox();
-    	JLabel labelVer = new JLabel("Visitado");
+    	chkVisitado.setEnabled(false);
+    	JLabel labelVer = new JLabel("Visitado: ");
     	labelVer.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
     	JPanel check = new JPanel();
     	check.setLayout(new GridLayout(1,2));
@@ -55,8 +67,8 @@ public class PanelDetallesRestaurante extends JPanel
         // Organiza los elementos en la venta
         // TODO completar el constructor
     	this.setLayout(new GridLayout(3, 1));
-    	this.add(labNombre);
-    	this.add(labCalificacion);
+    	this.add(nomPanel);
+    	this.add(calificacion);
     	this.add(check);
     	
     	this.setBorder(new EmptyBorder(20, 20, 20, 20));
@@ -71,8 +83,8 @@ public class PanelDetallesRestaurante extends JPanel
     private void actualizarRestaurante( String nombre, int calificacion, boolean visitado )
     {
      // TODO completar actualizarRestaurante
-    	labNombre.setText("Nombre: "+ nombre);
-    	labCalificacion.setText(Integer.toString(calificacion));
+    	labNombre.setText(nombre);
+    	labCalificacion.setIcon(buscarIconoCalificacion(calificacion));;
     	chkVisitado.setSelected(visitado);
     	this.repaint();
     }
