@@ -63,6 +63,8 @@ public class VentanaMapa extends JFrame implements ActionListener
         
         radioTodos.addActionListener(this);
         radioTodos.setActionCommand(TODOS);
+        panelMapa.actualizarMapa( ventanaPrincipal.getRestaurantes( true ) );
+        radioTodos.setSelected(true);
         
         radioVisitados.addActionListener(this);
         radioVisitados.setActionCommand(VISITADOS);
