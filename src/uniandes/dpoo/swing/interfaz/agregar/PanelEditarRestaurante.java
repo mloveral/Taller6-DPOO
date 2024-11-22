@@ -1,6 +1,7 @@
 package uniandes.dpoo.swing.interfaz.agregar;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JComboBox;
@@ -30,16 +31,34 @@ public class PanelEditarRestaurante extends JPanel
     {
         // Crea el campo para el nombre con una etiqueta al frente
         // TODO completar
+    	txtNombre = new JTextField();
+    	JLabel lbNombre = new JLabel("Nombre:");
+    	lbNombre.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
+    	
 
         // Crea el selector para la calificación con una etiqueta al frente
         // TODO completar
+    	cbbCalificacion = new JComboBox<String>(new String[]{"1", "2", "3", "4", "5"});
+    	cbbCalificacion.setSelectedIndex(0);
+    	JLabel lbCalificacion = new JLabel("Calificación:");
+    	lbCalificacion.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
 
         // Crea el selector para indicar si ya ha sido visitado, con una etiqueta al frente
         // TODO completar
+    	cbbVisitado = new JComboBox<String>(new String[] {"Sí", "No"});
+    	cbbVisitado.setSelectedIndex(0);
+    	JLabel lbVisitado = new JLabel("Visitado:");
+    	lbVisitado.setFont(new Font("Arial", Font.CENTER_BASELINE, 15));
 
         // Agregar todos los elementos al panel
         // TODO completar
-
+    	setLayout(new GridLayout(3,2));
+    	add(lbNombre);
+    	add(txtNombre);
+    	add(lbCalificacion);
+    	add(cbbCalificacion);
+    	add(lbVisitado);
+    	add(cbbVisitado);
     }
 
     /**
@@ -49,7 +68,13 @@ public class PanelEditarRestaurante extends JPanel
     public boolean getVisitado( )
     {
         // TODO completar
-        return false;
+    	boolean esVisitado = false;
+    	String visitado = (String) cbbVisitado.getSelectedItem();
+    	if (visitado.equals("Sí"))
+    	{
+    		esVisitado = true;
+    	}
+        return esVisitado;
     }
 
     /**
@@ -69,6 +94,6 @@ public class PanelEditarRestaurante extends JPanel
     public String getNombre( )
     {
         // TODO completar
-        return "";
+        return (String) txtNombre.getText().trim();
     }
 }
