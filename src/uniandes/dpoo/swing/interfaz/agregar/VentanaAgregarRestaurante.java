@@ -64,11 +64,12 @@ public class VentanaAgregarRestaurante extends JFrame
     public void agregarRestaurante( )
     {
         // TODO completar
-    	String nombre = panelDetalles.getName();
+    	String nombre = panelDetalles.getNombre();
     	int calificacion = panelDetalles.getCalificacion();
     	boolean visitado = panelDetalles.getVisitado();
-    	int x = panelDetalles.getX();
-    	int y = panelDetalles.getY();
+    	int[] xy = panelMapa.getCoordenadas();
+    	int x = xy[0];
+    	int y = xy[1];
     	ventanaPrincipal.agregarRestaurante(nombre, calificacion, x, y, visitado);
     	this.cerrarVentana();
     }
